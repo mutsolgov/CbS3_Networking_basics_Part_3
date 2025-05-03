@@ -1,0 +1,37 @@
+SW1#conf t
+SW1(config)#interface fa1/14
+SW1(config-if)#channel-group 1 mode on    
+SW1(config-if)#exit
+
+SW1(config)#interface fa1/15
+SW1(config-if)#channel-group 1 mode on
+SW1(config-if)#exit
+
+SW1(config)#interface port-channel 1
+SW1(config-if)#switchport mode trunk
+SW1(config-if)#switchport trunk allowed vlan 1-2,10,20,1002-1005
+SW1(config-if)#exit
+SW1(config)#end
+
+SW1#write memory
+
+
+
+
+
+SW2#conf t
+SW2(config)#interface fa1/14
+SW2(config-if)#channel-group 1 mode on
+SW2(config-if)#exit
+
+SW2(config)#interface fa1/15
+SW2(config-if)#channel-group 1 mode on
+SW2(config-if)#exit
+
+SW2(config)#interface port-channel 1
+SW2(config-if)#switchport mode trunk
+SW2(config-if)#switchport trunk allowed vlan 1-2,10,20,1002-1005
+SW2(config-if)#exit
+SW2(config)#end
+
+SW2#write memory
